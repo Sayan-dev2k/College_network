@@ -1,0 +1,219 @@
+Router>en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#hostname ISP
+ISP>en
+ISP#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+ISP(config)#int gig0/0
+ISP(config-if)#no sh
+central-switch>en
+central-switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+central-switch(config-vlan)#vlan 100
+central-switch(config-vlan)#name cs
+central-switch(config-vlan)#vlan 200
+central-switch(config-vlan)#name ec
+central-switch(config-vlan)#vlan 300
+central-switch(config-vlan)#name ad
+central-switch(config)#vlan 400
+central-switch(config-vlan)#name lib
+central-switch(config-vlan)#vlan 500
+central-switch(config-vlan)#name dir
+central-switch(config)#int fa0/1
+central-switch(config-if)#switchport mode trunk
+central-switch(config-if)#int fa0/2
+central-switch(config-if)#switchport mode trunk
+central-switch(config-if)#int fa0/3
+central-switch(config-if)#switchport mode trunk
+central-switch(config-if)#int fa0/4
+central-switch(config-if)#switchport mode trunk
+central-switch(config-if)#int fa0/5
+central-switch(config-if)#switchport mode trunk
+central-switch(config)#int fa0/1
+central-switch(config-if)#switchport access vlan 100
+central-switch(config-if)#switchport mode access
+central-switch(config)#int fa0/2
+central-switch(config-if)#switchport access vlan 200
+central-switch(config-if)#switchport mode access
+central-switch(config-if)#int fa0/3
+central-switch(config-if)#switchport access vlan 300
+central-switch(config-if)#switchport mode access 
+central-switch(config-if)#int fa0/4
+central-switch(config-if)#switchport access vlan 400
+central-switch(config-if)#switchport mode access 
+central-switch(config-if)#int fa0/5
+central-switch(config-if)#switchport access vlan 500
+central-switch(config-if)#switchport mode access
+central-switch(config)#int fa0/6
+central-switch(config-if)#switchport mode trunk
+cse(config)#int fa0/1
+cse(config-if)#switchport access vlan 100
+cse(config-if)#switchport mode access 
+cse(config)#int fa0/2
+cse(config-if)#switchport access vlan 100
+cse(config-if)#switchport mode access 
+cse(config)#int fa0/3
+cse(config-if)#switchport access vlan 100
+cse(config-if)#switchport mode access 
+cse(config)#int fa0/4
+cse(config-if)#switchport access vlan 100
+cse(config-if)#switchport mode access 
+cse(config)#int fa0/5
+cse(config-if)#switchport access vlan 100
+cse(config-if)#switchport mode access 
+cse(config)#int fa0/6
+cse(config-if)#switchport access vlan 100
+cse(config-if)#switchport mode access 
+Switch>en
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#hostname ec
+ec(config)#int fa0/1
+ec(config-if)#switchport access vlan 200
+ec(config-if)#switchport mode access 
+ec(config-if)#int fa0/2
+ec(config-if)#switchport access vlan 200
+ec(config-if)#switchport mode access 
+ec(config-if)#int fa0/3
+ec(config-if)#switchport access vlan 200
+ec(config-if)#switchport mode access 
+ec(config-if)#int fa0/4
+ec(config-if)#switchport access vlan 200
+ec(config-if)#switchport mode access 
+ec(config-if)#int fa0/5
+ec(config-if)#switchport access vlan 200
+ec(config-if)#switchport mode access 
+ec(config-if)#int fa0/6
+ec(config-if)#switchport access vlan 200
+ec(config-if)#switchport mode access 
+ec(config-if)#
+admin(config)#int fa0/1
+admin(config-if)#switchport access vlan 300
+admin(config-if)#switchport mode access
+admin(config-if)#int fa0/2
+admin(config-if)#switchport access vlan 300
+admin(config-if)#switchport mode access
+admin(config-if)#int fa0/3
+admin(config-if)#switchport access vlan 300
+admin(config-if)#switchport mode access
+admin(config-if)#int fa0/4
+admin(config-if)#switchport access vlan 300
+admin(config-if)#switchport mode access
+Switch>en
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#hostname lib
+lib(config)#
+%CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on FastEthernet0/1 (1), with central-switch FastEthernet0/4 (400).
+
+lib(config)#int fa0/1
+lib(config-if)#
+%CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on FastEthernet0/1 (1), with central-switch FastEthernet0/4 (400).
+switchport access vlan 400
+lib(config-if)#switchport mode access
+lib(config-if)#int fa0/2
+lib(config-if)#switchport access vlan 400
+lib(config-if)#switchport mode access
+lib(config-if)#int fa0/3
+lib(config-if)#switchport access vlan 400
+lib(config-if)#switchport mode access
+lib(config-if)#int fa0/4
+lib(config-if)#switchport access vlan 400
+lib(config-if)#switchport mode access
+Switch>en
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#hostname dir
+dir(config)#int fa0/1
+dir(config-if)#
+%CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on FastEthernet0/1 (1), with central-switch FastEthernet0/5 (500).
+
+dir(config-if)#
+%CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on FastEthernet0/1 (1), with central-switch FastEthernet0/5 (500).
+switchport access vlan 500
+dir(config-if)#switchport mode access
+dir(config-if)#int fa0/2
+%Invalid interface type and number
+dir(config)#int fa1/1
+dir(config-if)#switchport access vlan 500
+dir(config-if)#switchport mode access
+base=192.168.1.0
+sm=255.255.255.0
+no of subnets reqd=5
+minimum no. of subnets to be taken=8=2^3=2^n
+converted nw bits=3
+total nw bits=24+3=27
+new sm=255.255.255.224
+h=8-3=5
+block size=2^h=2^5=32
+valid hosts=32-2=30
+192.168.1.0-192.168.1.31
+192.168.1.32-192.168.1.63
+192.168.1.64-192.168.1.95
+192.168.1.96-192.168.1.127
+192.168.1.128-192.168.1.159
+ISP#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+ISP(config)#int gig0/0
+ISP(config-if)#int gig0/0.100
+ISP(config-subif)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0.100, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.100, changed state to up
+
+ISP(config-subif)#encapsulation dot1Q 100
+ISP(config-subif)#ip add 192.168.1.1 255.255.255.224
+ISP(config-subif)#int gig0/0.200
+ISP(config-subif)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0.200, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.200, changed state to up
+
+ISP(config-subif)#encapsulation dot1Q 200
+ISP(config-subif)#ip add 192.168.1.33 255.255.255.224
+ISP(config-subif)#int gig0/0.300
+ISP(config-subif)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0.300, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.300, changed state to up
+
+ISP(config-subif)#encapsulation dot1Q 300
+ISP(config-subif)#ip add 192.168.1.65 255.255.255.224
+ISP(config-subif)#int gig0/0.400
+ISP(config-subif)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0.400, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.400, changed state to up
+
+ISP(config-subif)#encapsulation dot1Q 400
+ISP(config-subif)#ip add 192.168.1.97 255.255.255.224
+ISP(config-subif)#encapsulation dot1Q 400
+ISP(config-subif)#ip add 192.168.1.97 255.255.255.224
+ISP(config-subif)#int gig0/0.500
+ISP(config-subif)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0.500, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.500, changed state to up
+
+ISP(config-subif)#encapsulation dot1Q 500
+ISP(config-subif)#ip add 192.168.1.129 255.255.255.224
+ISP#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+ISP(config)#service dhcp
+ISP(config)#ip dhcp pool cse
+ISP(dhcp-config)#default-router 192.168.1.1
+ISP(dhcp-config)#net 192.168.1.0 255.255.255.224
+ISP(dhcp-config)#ip dhcp pool ece
+ISP(dhcp-config)#default-router 192.168.1.33
+ISP(dhcp-config)#net 192.168.1.32 255.255.255.224
+ISP(dhcp-config)#ip dhcp pool admin
+ISP(dhcp-config)#default-router 192.168.1.65
+ISP(dhcp-config)#net 192.168.1.64 255.255.255.224
+ISP(dhcp-config)#ip dhcp pool lib
+ISP(dhcp-config)#default-router 192.168.1.97
+ISP(dhcp-config)#net 192.168.1.96 255.255.255.224
+ISP(dhcp-config)#ip dhcp pool dir
+ISP(dhcp-config)#default-router 192.168.1.129
+ISP(dhcp-config)#net 192.168.1.128 255.255.255.224
+
